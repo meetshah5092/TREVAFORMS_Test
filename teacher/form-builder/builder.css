@@ -1,0 +1,460 @@
+/* ==========================================================================
+   TrevaForms - 3-Column Vintage University Form Builder Stylesheet
+   ========================================================================== */
+
+/* Top Navigation */
+.builder-topbar {
+    height: 60px;
+    background: var(--paper);
+    border-bottom: 2px double var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.builder-brand-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.builder-title-input {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    border: 1.5px solid transparent;
+    border-radius: 2px;
+    padding: 0.3rem 0.6rem;
+    color: var(--ink);
+    background: transparent;
+    width: 260px;
+    transition: all var(--transition-fast);
+}
+
+.builder-title-input:hover, .builder-title-input:focus {
+    border-color: var(--rule);
+    background: var(--parchment);
+    outline: none;
+}
+
+.save-status-badge {
+    font-family: var(--type);
+    font-size: 11px;
+    color: var(--brown2);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* Back to Dashboard button */
+.builder-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.75rem;
+    border: 1.5px solid var(--rule);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--brown2);
+    font-family: var(--type);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+}
+
+.builder-back-btn:hover {
+    background: var(--parchment);
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+    text-decoration: none;
+}
+
+.builder-back-arrow {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.builder-back-label {
+    font-size: 11.5px;
+}
+
+.builder-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--rule);
+    opacity: 0.5;
+}
+
+/* 3-Column Layout Workspace */
+.builder-workspace {
+    display: flex;
+    height: calc(100vh - 60px);
+    max-height: calc(100vh - 60px);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Custom Scrollbars */
+.elements-sidebar::-webkit-scrollbar,
+.canvas-main-area::-webkit-scrollbar,
+.properties-sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.elements-sidebar::-webkit-scrollbar-track,
+.canvas-main-area::-webkit-scrollbar-track,
+.properties-sidebar::-webkit-scrollbar-track {
+    background: var(--parchment);
+}
+
+.elements-sidebar::-webkit-scrollbar-thumb,
+.canvas-main-area::-webkit-scrollbar-thumb,
+.properties-sidebar::-webkit-scrollbar-thumb {
+    background: var(--rule);
+    border-radius: 4px;
+}
+
+.elements-sidebar::-webkit-scrollbar-thumb:hover,
+.canvas-main-area::-webkit-scrollbar-thumb:hover,
+.properties-sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--terracotta);
+}
+
+/* --------------------------------------------------------------------------
+   Left Sidebar: Drag & Drop Elements Palette
+   -------------------------------------------------------------------------- */
+.elements-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: var(--paper);
+    border-right: 2px double var(--rule);
+    padding: 1.25rem 1rem 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    min-height: 0;
+    height: 100%;
+}
+
+.sidebar-title-block {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    border-bottom: 2px double var(--rule);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.elements-palette-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.element-item-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: var(--parchment);
+    border: 1.5px solid var(--rule);
+    border-radius: 3px;
+    cursor: grab;
+    user-select: none;
+    transition: all var(--transition-fast);
+}
+
+.element-item-card:hover {
+    border-color: var(--terracotta);
+    background: #EFE2C6;
+    transform: translateX(2px);
+    box-shadow: 2px 2px 0 var(--brown);
+}
+
+.element-item-card:active {
+    cursor: grabbing;
+}
+
+.element-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--terracotta);
+}
+
+.element-label {
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   Center: Form Canvas Sheet (Paper Document Container)
+   -------------------------------------------------------------------------- */
+.canvas-main-area {
+    flex: 1;
+    background: var(--parchment);
+    background-image:
+        radial-gradient(rgba(107,79,50,.035) 1px, transparent 1px),
+        radial-gradient(rgba(107,79,50,.025) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    padding: 2rem 1.5rem 6rem;
+    overflow-y: auto;
+    min-height: 0;
+    height: 100%;
+    display: block;
+}
+
+.paper-sheet-canvas {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 4rem auto;
+    background: var(--paper);
+    border: 2px solid var(--rule);
+    border-radius: 4px;
+    padding: 2.25rem 2.5rem;
+    box-shadow: 6px 6px 0 rgba(107, 79, 50, 0.18);
+    position: relative;
+    min-height: 500px;
+    height: auto;
+}
+
+.paper-sheet-canvas::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(201, 179, 140, 0.45);
+    pointer-events: none;
+}
+
+/* Canvas Sheet Header */
+.canvas-form-header {
+    border-bottom: 2px double var(--rule);
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.75rem;
+}
+
+.canvas-form-title-input {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--ink);
+    border: 1px solid transparent;
+    width: 100%;
+    background: transparent;
+    padding: 0.2rem 0;
+    border-bottom: 1.5px dashed transparent;
+}
+
+.canvas-form-title-input:hover, .canvas-form-title-input:focus {
+    border-bottom-color: var(--terracotta);
+    outline: none;
+}
+
+.canvas-form-desc-input {
+    font-family: var(--merri);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--brown2);
+    border: 1px solid transparent;
+    width: 100%;
+    background: transparent;
+    resize: vertical;
+    margin-top: 0.5rem;
+    min-height: 44px;
+    border-bottom: 1.5px dashed transparent;
+}
+
+.canvas-form-desc-input:hover, .canvas-form-desc-input:focus {
+    border-bottom-color: var(--terracotta);
+    outline: none;
+}
+
+/* Empty Drop Zone */
+.empty-canvas-dropzone {
+    border: 2px dashed var(--rule);
+    background: var(--parchment);
+    border-radius: 4px;
+    padding: 3.5rem 1.5rem;
+    text-align: center;
+    color: var(--brown2);
+    margin: 1.5rem 0;
+    transition: all var(--transition-fast);
+}
+
+.empty-canvas-dropzone.drag-over {
+    border-color: var(--terracotta);
+    background: #EFE2C6;
+    color: var(--terracotta);
+}
+
+.dropzone-seal {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+}
+
+.dropzone-text {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.dropzone-sub {
+    font-family: var(--merri);
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+/* Canvas Questions Container & Cards */
+.canvas-questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.canvas-question-card {
+    background: var(--parchment);
+    border: 1.5px solid var(--rule);
+    border-radius: 3px;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.canvas-question-card:hover {
+    border-color: var(--rule-hover, var(--brown2));
+    box-shadow: 2px 2px 0 rgba(107, 79, 50, 0.1);
+}
+
+.canvas-question-card.selected {
+    border-color: var(--terracotta);
+    border-left: 5px solid var(--terracotta);
+    background: #FFFBF0;
+    box-shadow: 3px 3px 0 rgba(107, 79, 50, 0.15);
+}
+
+.card-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.card-drag-handle {
+    cursor: grab;
+    color: var(--brown2);
+    font-size: 1rem;
+    padding: 2px 6px;
+    user-select: none;
+}
+
+.card-drag-handle:active {
+    cursor: grabbing;
+}
+
+.card-actions-quick {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.canvas-q-title {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+}
+
+.canvas-q-desc {
+    font-family: var(--merri);
+    font-style: italic;
+    font-size: 0.825rem;
+    color: var(--brown2);
+    margin-bottom: 0.75rem;
+}
+
+.canvas-q-preview-body {
+    padding: 0.5rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   Right Sidebar: Properties Inspector
+   -------------------------------------------------------------------------- */
+.properties-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    background: var(--paper);
+    border-left: 2px double var(--rule);
+    padding: 1.25rem 1rem 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    min-height: 0;
+    height: 100%;
+}
+
+.prop-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.prop-options-builder {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.prop-option-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.no-selection-notice {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--brown2);
+    font-family: var(--merri);
+    font-style: italic;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+    .builder-workspace {
+        flex-direction: column;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    .elements-sidebar, .canvas-main-area, .properties-sidebar {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: visible !important;
+        border: none;
+        border-bottom: 2px double var(--rule);
+    }
+}

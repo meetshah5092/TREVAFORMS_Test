@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard — TrevaForms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Cinzel:wght@600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/student.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="app-shell">
+    <aside id="student-sidebar"></aside>
+
+    <div class="main-content">
+        <!-- Header -->
+        <header class="top-header" id="top-header">
+            <button class="header-hamburger" id="sidebar-hamburger" aria-label="Menu" onclick="toggleSidebar()">☰</button>
+            <span class="header-title" id="header-title">Student Dashboard</span>
+            <div class="header-spacer"></div>
+            <div class="header-search">
+                <span class="header-search-icon">🔍</span>
+                <input type="search" placeholder="Search assigned forms..." id="header-search-input" onkeyup="if(event.key==='Enter') window.location.href='../forms/index.html?q=' + encodeURIComponent(this.value)">
+            </div>
+            <div class="header-actions">
+                <button class="header-icon-btn" onclick="window.location.href='../notifications/index.html'" title="Notifications">
+                    🔔
+                    <span class="header-notif-count" id="header-notif-count"></span>
+                </button>
+                <button class="header-avatar-btn" id="header-avatar" onclick="window.location.href='../profile/index.html'">S</button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="page-content" id="page-content">
+            <!-- Greeting & Quick Status -->
+            <div class="greeting-section">
+                <div>
+                    <h1 class="greeting-title" id="greeting-title">Good day 👋</h1>
+                    <p class="greeting-subtitle">Here is what you need to complete today.</p>
+                </div>
+                <div class="greeting-chip" id="greeting-status-chip">
+                    <span class="pending-pulse"></span>
+                    <span id="greeting-pending-text">Checking pending work...</span>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card stat-warning">
+                    <div class="stat-card-icon">📋</div>
+                    <div class="stat-card-value" id="stat-pending">0</div>
+                    <div class="stat-card-label">Pending Forms</div>
+                </div>
+                <div class="stat-card stat-success">
+                    <div class="stat-card-icon">✓</div>
+                    <div class="stat-card-value" id="stat-completed">0</div>
+                    <div class="stat-card-label">Completed Forms</div>
+                </div>
+                <div class="stat-card stat-primary">
+                    <div class="stat-card-icon">📝</div>
+                    <div class="stat-card-value" id="stat-total">0</div>
+                    <div class="stat-card-label">Total Assigned</div>
+                </div>
+                <div class="stat-card stat-danger">
+                    <div class="stat-card-icon">⏰</div>
+                    <div class="stat-card-value" id="stat-due-soon">0</div>
+                    <div class="stat-card-label">Due Soon / Urgent</div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content Grid -->
+            <div class="dashboard-grid">
+                <!-- Left Column: Pending Forms -->
+                <div class="dashboard-left">
+                    <div class="section-header">
+                        <h2 class="section-title">Forms you need to complete</h2>
+                        <a href="../forms/index.html" class="section-link">View all forms →</a>
+                    </div>
+                    
+                    <div class="pending-cards-list" id="pending-forms-container">
+                        <!-- Rendered by JS or Skeleton -->
+                        <div class="skeleton-card"><div class="skeleton-line" style="width:50%;"></div><div class="skeleton-line" style="width:70%;"></div></div>
+                    </div>
+
+                    <!-- Recent Submissions -->
+                    <div style="margin-top: 10px;">
+                        <div class="section-header">
+                            <h2 class="section-title">Recently submitted</h2>
+                            <a href="../submissions/index.html" class="section-link">View my submissions →</a>
+                        </div>
+                        <div class="card">
+                            <div class="submissions-compact-list" id="recent-submissions-container">
+                                <p style="color:var(--muted);font-size:13px;padding:12px 0;">Loading submissions...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Due Soon & Quick Info -->
+                <div class="dashboard-right">
+                    <!-- Coming up -->
+                    <div>
+                        <div class="section-header">
+                            <h2 class="section-title">Coming up</h2>
+                        </div>
+                        <div class="card">
+                            <div class="upcoming-list" id="upcoming-list-container">
+                                <p style="color:var(--muted);font-size:13px;padding:12px 0;">Loading schedule...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity Chart -->
+                    <div style="margin-top: 24px;">
+                        <div class="section-header">
+                            <h2 class="section-title">My Activity (14 Days)</h2>
+                        </div>
+                        <div class="card" style="padding: 16px; position: relative; height: 220px;">
+                            <canvas id="student-activity-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Recent Student Activity -->
+                    <div>
+                        <div class="section-header">
+                            <h2 class="section-title">Recent Activity</h2>
+                        </div>
+                        <div class="card">
+                            <div class="activity-feed" id="activity-feed-container">
+                                <div class="activity-item">
+                                    <div class="activity-bullet">✓</div>
+                                    <div>
+                                        <div class="activity-text">Student portal session active</div>
+                                        <div class="activity-time">Just now</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../shared/js/supabase-client.js"></script>
+    <script src="../../shared/js/api-client.js"></script>
+    <script src="../shared/app.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

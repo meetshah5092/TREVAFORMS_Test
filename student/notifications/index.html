@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications — TrevaForms Student</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Cinzel:wght@600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/student.css">
+    <link rel="stylesheet" href="notifications.css">
+</head>
+<body class="app-shell">
+    <aside id="student-sidebar"></aside>
+
+    <div class="main-content">
+        <header class="top-header" id="top-header">
+            <button class="header-hamburger" id="sidebar-hamburger" aria-label="Menu" onclick="toggleSidebar()">☰</button>
+            <span class="header-title" id="header-title">Notifications</span>
+            <div class="header-spacer"></div>
+            <div class="header-actions">
+                <button class="header-icon-btn" onclick="window.location.href='../notifications/index.html'" title="Notifications">
+                    🔔
+                    <span class="header-notif-count" id="header-notif-count"></span>
+                </button>
+                <button class="header-avatar-btn" id="header-avatar" onclick="window.location.href='../profile/index.html'">S</button>
+            </div>
+        </header>
+
+        <main class="page-content" id="page-content">
+            <div class="page-header">
+                <h1 class="page-title">Notifications &amp; Activity</h1>
+                <p class="page-subtitle">Stay informed about form assignments, approaching deadlines, and submission alerts.</p>
+            </div>
+
+            <!-- Top Action Bar -->
+            <div class="notif-topbar">
+                <div class="notif-unread-chip" id="notif-unread-chip">
+                    <span id="unread-count-text">0 Unread Alerts</span>
+                </div>
+                <div>
+                    <button class="btn btn-ghost btn-sm" id="btn-mark-all-read" onclick="handleMarkAllRead()">
+                        ✓ Mark All as Read
+                    </button>
+                </div>
+            </div>
+
+            <!-- Notifications List -->
+            <div class="notifications-container" id="notifications-list-container">
+                <div class="skeleton-card"><div class="skeleton-line" style="width:30%;"></div><div class="skeleton-line" style="width:70%;"></div></div>
+                <div class="skeleton-card"><div class="skeleton-line" style="width:30%;"></div><div class="skeleton-line" style="width:70%;"></div></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../shared/js/supabase-client.js"></script>
+    <script src="../shared/app.js"></script>
+    <script src="notifications.js"></script>
+</body>
+</html>

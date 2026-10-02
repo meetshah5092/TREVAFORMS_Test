@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TrevaForms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Cinzel:wght@600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/global.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="app-layout">
+        <aside class="sidebar" id="app-sidebar"></aside>
+
+        <main class="main-content">
+            <header class="top-bar" id="top-bar"></header>
+
+            <div class="page-container">
+                <!-- Topline Header -->
+                <div class="topline">
+                    <div class="greet">
+                        <h1>Good afternoon, <span id="greeting-name">Meet</span> 👋</h1>
+                        <p>Create, manage, and analyze your forms in your registrar ledger.</p>
+                    </div>
+                    <div class="workspace-today">
+                        <b>Your workspace today</b>
+                        <span id="ws-line">3 forms active · 18 responses today · 2 drafts waiting</span>
+                    </div>
+                </div>
+
+                <!-- Search & Filter Row -->
+                <div class="searchrow">
+                    <div class="search-box">
+                        🔍 <input type="text" id="input-dashboard-search" placeholder="Search forms by title, keyword, or record ID...">
+                    </div>
+                    <select id="select-dashboard-filter" class="filter-btn" style="outline: none;">
+                        <option value="all">All Statuses ▾</option>
+                        <option value="published">Published</option>
+                        <option value="draft">Drafts</option>
+                        <option value="archived">Archived</option>
+                    </select>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="stats-row">
+                    <div class="paper-card">
+                        <div class="stat-label">TOTAL FORMS</div>
+                        <div class="stat-value" id="stat-total-forms">69</div>
+                        <div class="stat-delta">↑ 8% this month</div>
+                    </div>
+                    <div class="paper-card">
+                        <div class="stat-label">RESPONSES</div>
+                        <div class="stat-value" id="stat-total-responses">1,284</div>
+                        <div class="stat-delta">↑ 14% this month</div>
+                    </div>
+                    <div class="paper-card">
+                        <div class="stat-label">PUBLISHED</div>
+                        <div class="stat-value" id="stat-published-forms">18</div>
+                        <div class="stat-delta">75% of forms active</div>
+                    </div>
+                    <button id="createBtn" class="create-btn">+ Create Form</button>
+                </div>
+
+                <!-- Content Grid Split -->
+                <div class="dashboard-grid-split">
+                    <!-- Left: Recent Forms Ledger -->
+                    <div class="panel">
+                        <div class="panel-head">
+                            <span class="panel-title">Recent Forms Ledger</span>
+                            <a href="../forms/index.html" style="font-size: 12.5px; font-weight: 700; color: var(--terracotta);">View all forms →</a>
+                        </div>
+                        <div id="recent-forms-list">
+                            <!-- Rendered by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Response Activity Chart -->
+                    <div class="panel" style="display: flex; flex-direction: column;">
+                        <div class="panel-head">
+                            <span class="panel-title">Response Activity</span>
+                            <a href="../analytics/index.html" style="font-size: 12px; font-weight: 700; color: var(--terracotta);">Analytics →</a>
+                        </div>
+                        <div style="flex: 1; position: relative; min-height: 240px; width: 100%;">
+                            <canvas id="dashboard-activity-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Templates Strip -->
+                <div class="panel" style="margin-top: 20px;">
+                    <div class="panel-head">
+                        <span class="panel-title">Start with a Template</span>
+                        <a href="../templates/index.html" style="font-size: 12.5px; font-weight: 700; color: var(--terracotta);">View template library →</a>
+                    </div>
+                    <div class="tpl-grid" id="quick-templates-list">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../shared/supabase-config.js"></script>
+    <script src="../../shared/js/api-client.js"></script>
+    <script src="../shared/demo-data.js"></script>
+    <script src="../shared/app.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

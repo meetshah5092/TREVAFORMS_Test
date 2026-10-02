@@ -1,0 +1,62 @@
+/* ==========================================================================
+   TrevaForms - Responses Page (Registrar Parchment Theme)
+   ========================================================================== */
+
+.responses-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.responses-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    padding: 1rem 1.25rem;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 var(--rule), 3px 3px 0 rgba(107, 79, 50, 0.06);
+    position: relative;
+}
+
+.responses-filter-bar::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(201, 179, 140, 0.45);
+    pointer-events: none;
+}
+
+.response-detail-modal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.response-detail-item {
+    padding: 0.85rem 1rem;
+    background: var(--parchment);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+}
+
+.response-detail-q {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--brown2);
+    margin-bottom: 0.25rem;
+}
+
+.response-detail-a {
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 500;
+}

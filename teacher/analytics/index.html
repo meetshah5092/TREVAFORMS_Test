@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - TrevaForms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Cinzel:wght@600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/global.css">
+    <link rel="stylesheet" href="analytics.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="app-layout">
+        <aside class="sidebar" id="app-sidebar"></aside>
+
+        <main class="main-content">
+            <header class="top-bar" id="top-bar"></header>
+
+            <div class="page-container">
+                <div class="analytics-header-bar">
+                    <div>
+                        <h1 style="font-family: var(--serif); font-size: 1.85rem; font-weight: 800;">Analytics Dashboard</h1>
+                        <p style="font-family: var(--merri); font-style: italic; color: var(--brown2); font-size: 0.9rem;">Deep dive into response rates, completion speed, and rating distribution.</p>
+                    </div>
+
+                    <div style="min-width: 250px;">
+                        <label class="form-label">Filter by Form</label>
+                        <select id="select-analytics-form" class="form-control"></select>
+                    </div>
+                </div>
+
+                <!-- KPI Metric Cards -->
+                <div class="stats-row" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 1.5rem;">
+                    <div class="paper-card">
+                        <div class="stat-label">TOTAL SUBMISSIONS</div>
+                        <div class="stat-value" id="analytics-total-resp" style="color: var(--terracotta);">0</div>
+                    </div>
+
+                    <div class="paper-card">
+                        <div class="stat-label">RESPONSE RATE</div>
+                        <div class="stat-value" id="analytics-resp-rate" style="color: #3E5C2E;">94.2%</div>
+                    </div>
+
+                    <div class="paper-card">
+                        <div class="stat-label">AVG COMPLETION TIME</div>
+                        <div class="stat-value" id="analytics-completion-time" style="color: #B87820;">1m 45s</div>
+                    </div>
+
+                    <div class="paper-card">
+                        <div class="stat-label">COMPLETION PCT</div>
+                        <div class="stat-value" id="analytics-completion-pct" style="color: var(--ink);">98.2%</div>
+                    </div>
+                </div>
+
+                <!-- Charts Grid -->
+                <div class="analytics-charts-grid">
+                    <div class="chart-card-container">
+                        <div class="chart-card-header">
+                            <h3 style="font-family: var(--serif); font-size: 1.1rem; font-weight: 700;">Responses Over Time</h3>
+                            <span class="badge badge-published">Past 7 Days</span>
+                        </div>
+                        <div class="chart-canvas-wrapper">
+                            <canvas id="chart-responses-timeline"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card-container">
+                        <div class="chart-card-header">
+                            <h3 style="font-family: var(--serif); font-size: 1.1rem; font-weight: 700;">Answer & Rating Distribution</h3>
+                            <span class="badge badge-published">Aggregate Breakdown</span>
+                        </div>
+                        <div class="chart-canvas-wrapper">
+                            <canvas id="chart-answer-distribution"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../shared/supabase-config.js"></script>
+    <script src="../shared/demo-data.js"></script>
+    <script src="../shared/app.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

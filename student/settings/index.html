@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings — TrevaForms Student</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Cinzel:wght@600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/student.css">
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body class="app-shell">
+    <aside id="student-sidebar"></aside>
+
+    <div class="main-content">
+        <header class="top-header" id="top-header">
+            <button class="header-hamburger" id="sidebar-hamburger" aria-label="Menu" onclick="toggleSidebar()">☰</button>
+            <span class="header-title" id="header-title">Settings</span>
+            <div class="header-spacer"></div>
+            <div class="header-actions">
+                <button class="header-icon-btn" onclick="window.location.href='../notifications/index.html'" title="Notifications">
+                    🔔
+                    <span class="header-notif-count" id="header-notif-count"></span>
+                </button>
+                <button class="header-avatar-btn" id="header-avatar" onclick="window.location.href='../profile/index.html'">S</button>
+            </div>
+        </header>
+
+        <main class="page-content" id="page-content">
+            <div class="page-header">
+                <h1 class="page-title">Portal Preferences</h1>
+                <p class="page-subtitle">Configure theme appearance, notification channels, account security, and portal session.</p>
+            </div>
+
+            <div class="settings-container">
+                <!-- 1. Appearance / Theme -->
+                <div class="settings-card">
+                    <h2 class="settings-section-title">Theme Appearance</h2>
+                    <p class="settings-section-desc">Choose how TrevaForms looks on your device.</p>
+
+                    <div class="theme-selector-grid">
+                        <button type="button" class="theme-choice-btn" id="theme-btn-light" onclick="setPortalTheme('light')">
+                            <span class="theme-btn-icon">☀️</span>
+                            <span class="theme-btn-title">Light Theme</span>
+                        </button>
+                        <button type="button" class="theme-choice-btn" id="theme-btn-dark" onclick="setPortalTheme('dark')">
+                            <span class="theme-btn-icon">🌙</span>
+                            <span class="theme-btn-title">Dark Theme</span>
+                        </button>
+                        <button type="button" class="theme-choice-btn" id="theme-btn-system" onclick="setPortalTheme('system')">
+                            <span class="theme-btn-icon">💻</span>
+                            <span class="theme-btn-title">System Default</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Notifications Preferences -->
+                <div class="settings-card">
+                    <h2 class="settings-section-title">Notifications</h2>
+                    <p class="settings-section-desc">Control what alerts you receive in the portal.</p>
+
+                    <div class="settings-toggle-row">
+                        <div class="settings-toggle-info">
+                            <div class="settings-toggle-label">New Form Assignments</div>
+                            <div class="settings-toggle-sub">Receive an alert when an instructor assigns a new form to your batch.</div>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="pref-notif-assign" checked onchange="saveNotificationPref('assign', this.checked)">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-toggle-row">
+                        <div class="settings-toggle-info">
+                            <div class="settings-toggle-label">Deadline Approaching Reminders</div>
+                            <div class="settings-toggle-sub">Receive reminders 24 hours and 6 hours before a form expires.</div>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="pref-notif-deadline" checked onchange="saveNotificationPref('deadline', this.checked)">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-toggle-row">
+                        <div class="settings-toggle-info">
+                            <div class="settings-toggle-label">Submission Confirmations</div>
+                            <div class="settings-toggle-sub">Keep an activity log when your response is registered in the database.</div>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="pref-notif-sub" checked onchange="saveNotificationPref('sub', this.checked)">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 3. Account & Security -->
+                <div class="settings-card">
+                    <h2 class="settings-section-title">Account Security</h2>
+                    <p class="settings-section-desc">Manage credentials and authentication details.</p>
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--border); flex-wrap:wrap; gap:12px;">
+                        <div>
+                            <div style="font-weight:600; font-size:14px; color:var(--text);">Password Reset</div>
+                            <div style="font-size:12.5px; color:var(--muted);">Send a secure link to your email to update your login password.</div>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="handleSendPasswordReset()">
+                            Send Password Reset Email
+                        </button>
+                    </div>
+
+                    <!-- Danger Zone -->
+                    <div class="danger-zone-box">
+                        <div class="danger-zone-title">Danger Zone</div>
+                        <p class="danger-zone-desc">Permanently sign out of all active sessions on this device.</p>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="handleAccountSignOut()">
+                            Sign Out of TrevaForms
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../shared/js/supabase-client.js"></script>
+    <script src="../shared/app.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>

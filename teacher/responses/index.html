@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responses - TrevaForms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Cinzel:wght@600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/global.css">
+    <link rel="stylesheet" href="responses.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <aside class="sidebar" id="app-sidebar"></aside>
+
+        <main class="main-content">
+            <header class="top-bar" id="top-bar"></header>
+
+            <div class="page-container">
+                <div class="responses-header-bar">
+                    <div>
+                        <h1 style="font-family: var(--serif); font-size: 1.85rem; font-weight: 800;">Live Response Feed</h1>
+                        <p style="font-family: var(--merri); font-style: italic; color: var(--brown2); font-size: 0.9rem;">View, inspect, filter, and export individual form submissions.</p>
+                    </div>
+
+                    <button id="btn-export-csv" class="btn btn-primary">
+                        <span>📥</span>
+                        <span>Export CSV</span>
+                    </button>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="stats-row" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 1.5rem;">
+                    <div class="paper-card" style="padding: 1rem 1.25rem;">
+                        <div class="stat-label">FILTERED RESPONSES</div>
+                        <div class="stat-value" id="resp-stat-total" style="font-size: 1.6rem; color: var(--terracotta);">0</div>
+                    </div>
+                    <div class="paper-card" style="padding: 1rem 1.25rem;">
+                        <div class="stat-label">TODAY'S SUBMISSIONS</div>
+                        <div class="stat-value" id="resp-stat-today" style="font-size: 1.6rem; color: #3E5C2E;">0</div>
+                    </div>
+                    <div class="paper-card" style="padding: 1rem 1.25rem;">
+                        <div class="stat-label">COMPLETION RATE</div>
+                        <div class="stat-value" id="resp-stat-completion" style="font-size: 1.6rem; color: var(--ink);">98.4%</div>
+                    </div>
+                </div>
+
+                <!-- Filter Controls Bar -->
+                <div class="responses-filter-bar">
+                    <div style="flex: 1; min-width: 220px;">
+                        <label class="form-label">Select Form</label>
+                        <select id="select-response-form" class="form-control"></select>
+                    </div>
+
+                    <div style="width: 160px;">
+                        <label class="form-label">Timeframe</label>
+                        <select id="select-response-timeframe" class="form-control">
+                            <option value="all">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">Past 7 Days</option>
+                        </select>
+                    </div>
+
+                    <div style="flex: 1; min-width: 220px;">
+                        <label class="form-label">Search Respondent</label>
+                        <input type="text" id="input-responses-search" class="form-control" placeholder="Name, email or form title...">
+                    </div>
+                </div>
+
+                <!-- Response Data Table -->
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Respondent</th>
+                                <th>Email</th>
+                                <th>Form Title</th>
+                                <th>Submitted At</th>
+                                <th>Status</th>
+                                <th style="text-align: right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="responses-table-body">
+                            <!-- Rendered by JS -->
+                        </tbody>
+                    </table>
+
+                    <div id="responses-empty-state" style="display: none; text-align: center; padding: 3rem 1rem;">
+                        <p style="color: var(--brown2); font-family: var(--merri); font-style: italic;">No responses match the selected filter criteria.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../shared/supabase-config.js"></script>
+    <script src="../shared/demo-data.js"></script>
+    <script src="../shared/app.js"></script>
+    <script src="responses.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Builder - TrevaForms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Cinzel:wght@600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/global.css">
+    <link rel="stylesheet" href="builder.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar for Form Builder -->
+    <header class="builder-topbar">
+        <div class="builder-brand-group">
+            <a href="../dashboard/index.html" class="builder-back-btn" title="Back to Dashboard">
+                <span class="builder-back-arrow">←</span>
+                <span class="builder-back-label">Dashboard</span>
+            </a>
+            <div class="builder-divider"></div>
+            <a href="../forms/index.html" class="brand">
+                <div class="brand-mark">T</div>
+            </a>
+            <input type="text" id="builder-top-title" class="builder-title-input" value="Student Feedback Form">
+            <div class="save-status-badge" id="save-status">
+                <span>✓ Saved to database</span>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button id="btn-builder-preview" class="btn btn-secondary btn-sm">
+                👁️ Preview
+            </button>
+            <button id="btn-builder-save" class="btn btn-outline btn-sm">
+                💾 Save
+            </button>
+            <button id="btn-builder-publish" class="btn btn-primary btn-sm">
+                🚀 Publish
+            </button>
+        </div>
+    </header>
+
+    <!-- 3-Column Builder Workspace -->
+    <div class="builder-workspace">
+        
+        <!-- Left Sidebar: Form Elements Palette -->
+        <aside class="elements-sidebar">
+            <div class="sidebar-title-block">
+                <span>Elements</span>
+                <span style="font-family: var(--type); font-size: 10px; color: var(--brown2);">Drag or Click</span>
+            </div>
+            <div class="elements-palette-list" id="elements-palette-container">
+                <!-- Rendered dynamically by builder.js -->
+            </div>
+        </aside>
+
+        <!-- Center: Paper Sheet Form Canvas -->
+        <main class="canvas-main-area">
+            <div class="paper-sheet-canvas" id="paper-sheet-canvas">
+                <!-- Canvas Form Header -->
+                <div class="canvas-form-header">
+                    <input type="text" id="canvas-form-title" class="canvas-form-title-input" value="Student Feedback Form" placeholder="Form Title">
+                    <textarea id="canvas-form-desc" class="canvas-form-desc-input" placeholder="Please complete this form to share your feedback.">Please complete this form to share your feedback.</textarea>
+                </div>
+
+                <!-- Empty Canvas Dropzone (Shown when no questions) -->
+                <div id="empty-canvas-dropzone" class="empty-canvas-dropzone" style="display: none;">
+                    <div class="dropzone-seal">📜</div>
+                    <div class="dropzone-text">Drag an element here to start building your form</div>
+                    <div class="dropzone-sub">or click an element from the left palette</div>
+                </div>
+
+                <!-- Canvas Questions List Target -->
+                <div id="canvas-questions-list" class="canvas-questions-list">
+                    <!-- Rendered by builder.js -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar: Properties Inspector -->
+        <aside class="properties-sidebar" id="properties-inspector-container">
+            <!-- Properties rendered dynamically by builder.js -->
+        </aside>
+
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../shared/supabase-config.js"></script>
+    <script src="../shared/demo-data.js"></script>
+    <script src="../shared/app.js"></script>
+    <script src="builder.js"></script>
+</body>
+</html>

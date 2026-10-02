@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Submissions — TrevaForms Student</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Cinzel:wght@600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/student.css">
+    <link rel="stylesheet" href="submissions.css">
+</head>
+<body class="app-shell">
+    <aside id="student-sidebar"></aside>
+
+    <div class="main-content">
+        <header class="top-header" id="top-header">
+            <button class="header-hamburger" id="sidebar-hamburger" aria-label="Menu" onclick="toggleSidebar()">☰</button>
+            <span class="header-title" id="header-title">My Submissions</span>
+            <div class="header-spacer"></div>
+            <div class="header-actions">
+                <button class="header-icon-btn" onclick="window.location.href='../notifications/index.html'" title="Notifications">
+                    🔔
+                    <span class="header-notif-count" id="header-notif-count"></span>
+                </button>
+                <button class="header-avatar-btn" id="header-avatar" onclick="window.location.href='../profile/index.html'">S</button>
+            </div>
+        </header>
+
+        <main class="page-content" id="page-content">
+            <div class="page-header">
+                <h1 class="page-title">My Form Submissions</h1>
+                <p class="page-subtitle">Track, inspect, and review all your previously submitted responses.</p>
+            </div>
+
+            <!-- Stats Chips -->
+            <div class="submissions-stat-chips">
+                <div class="sub-stat-chip">
+                    Total Submitted: <strong id="chip-total-subs">0</strong>
+                </div>
+                <div class="sub-stat-chip">
+                    This Week: <strong id="chip-week-subs">0</strong>
+                </div>
+                <div class="sub-stat-chip">
+                    This Month: <strong id="chip-month-subs">0</strong>
+                </div>
+            </div>
+
+            <!-- Tabs and Filters -->
+            <div class="forms-controls-bar" style="margin-bottom: 20px;">
+                <div class="tabs" id="subs-tabs">
+                    <button class="tab-btn active" data-tab="all">All</button>
+                    <button class="tab-btn" data-tab="today">Today</button>
+                    <button class="tab-btn" data-tab="week">This Week</button>
+                    <button class="tab-btn" data-tab="month">This Month</button>
+                </div>
+
+                <div class="forms-filters">
+                    <div class="forms-search-box">
+                        <span>🔍</span>
+                        <input type="text" id="input-subs-search" placeholder="Search by form or teacher...">
+                    </div>
+                    <select id="select-subs-sort" class="forms-sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="title">Form Title (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Submissions List -->
+            <div class="submissions-list" id="submissions-list-container">
+                <div class="skeleton-card"><div class="skeleton-line" style="width:40%;"></div><div class="skeleton-line" style="width:60%;"></div></div>
+                <div class="skeleton-card"><div class="skeleton-line" style="width:40%;"></div><div class="skeleton-line" style="width:60%;"></div></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../shared/js/supabase-client.js"></script>
+    <script src="../shared/app.js"></script>
+    <script src="submissions.js"></script>
+</body>
+</html>

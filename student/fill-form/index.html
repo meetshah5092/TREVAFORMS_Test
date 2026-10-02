@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Form — TrevaForms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Cinzel:wght@600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/student.css">
+    <link rel="stylesheet" href="fill-form.css">
+</head>
+<body class="fill-form-mode">
+
+    <!-- Minimal Fixed Top Bar -->
+    <header class="fill-form-topbar">
+        <button class="ff-back-btn" onclick="history.back()" title="Back to previous page">
+            ← <span>Back</span>
+        </button>
+
+        <span class="ff-topbar-title" id="topbar-form-title">Loading Form...</span>
+
+        <div class="ff-progress-wrap">
+            <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" id="form-progress-bar" style="width: 0%;"></div>
+            </div>
+            <span class="ff-progress-text" id="form-progress-text">0 of 0 answered</span>
+        </div>
+    </header>
+
+    <!-- Form Content Container -->
+    <main class="fill-form-container" id="fill-form-main">
+        <div id="form-loading-state" class="card" style="padding: 40px; text-align: center;">
+            <div class="skeleton-line" style="width: 50%; height: 24px; margin: 0 auto 16px;"></div>
+            <div class="skeleton-line" style="width: 70%; height: 16px; margin: 0 auto 12px;"></div>
+            <div class="skeleton-line" style="width: 40%; height: 14px; margin: 0 auto;"></div>
+        </div>
+
+        <!-- Rendered Form and Questions will mount here -->
+        <form id="student-fill-form" style="display: none;" novalidate>
+            <!-- Header card -->
+            <div class="form-header-card">
+                <h1 class="form-header-title" id="ff-title">Student Form</h1>
+                <div class="form-header-teacher" id="ff-teacher">
+                    <span>👤 Assigned by Instructor</span>
+                </div>
+                <div class="form-header-desc" id="ff-desc">Form description</div>
+                <div class="form-header-meta">
+                    <span class="deadline-tag deadline-normal" id="ff-deadline">No deadline</span>
+                    <span class="meta-chip" id="ff-time">⏱ ~5 min</span>
+                    <span style="font-size: 12px; color: var(--danger); margin-left: auto;">* Indicates required question</span>
+                </div>
+            </div>
+
+            <!-- Questions Container -->
+            <div id="ff-questions-list"></div>
+
+            <!-- Submit Bar -->
+            <div class="form-submit-bar">
+                <button type="button" class="btn btn-ghost" onclick="window.location.href='../dashboard/index.html'">
+                    Cancel
+                </button>
+                <button type="submit" class="btn btn-primary btn-lg" id="ff-submit-btn">
+                    <span>Submit Form</span>
+                </button>
+            </div>
+        </form>
+
+        <!-- Success Mount (Hidden by default) -->
+        <div id="ff-success-view" style="display: none;"></div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../shared/js/supabase-client.js"></script>
+    <script src="../shared/app.js"></script>
+    <script src="fill-form.js"></script>
+</body>
+</html>

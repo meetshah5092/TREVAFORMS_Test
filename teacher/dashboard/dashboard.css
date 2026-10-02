@@ -1,0 +1,279 @@
+/* ==========================================================================
+   TrevaForms - Dashboard Stylesheet (Registrar Parchment Theme)
+   ========================================================================== */
+
+.topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.greet h1 {
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: 29px;
+    margin: 0 0 4px;
+    color: var(--ink);
+}
+
+.greet p {
+    font-family: var(--merri);
+    font-style: italic;
+    color: var(--brown2);
+    margin: 0;
+    font-size: 14px;
+}
+
+.workspace-today {
+    text-align: right;
+    font-family: var(--type);
+    font-size: 11.5px;
+    color: var(--brown2);
+}
+
+.workspace-today b {
+    color: var(--terracotta);
+    display: block;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12.5px;
+    margin-bottom: 3px;
+    letter-spacing: 0.2px;
+}
+
+/* Search row */
+.searchrow {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.search-box {
+    flex: 1;
+    background: var(--paper);
+    border: 2px solid var(--rule);
+    border-radius: 2px;
+    padding: 10px 16px;
+    font-family: var(--sans);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-box input {
+    border: none;
+    background: none;
+    outline: none;
+    font-family: var(--sans);
+    font-size: 14px;
+    width: 100%;
+    color: var(--ink);
+}
+
+.filter-btn {
+    background: var(--paper);
+    border: 2px solid var(--rule);
+    border-radius: 2px;
+    padding: 10px 18px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--brown);
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    border-color: var(--terracotta);
+}
+
+/* Stats Row */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 26px;
+}
+
+.stats-row .create-btn {
+    align-self: center;
+    height: 46px;
+    padding: 0 24px;
+    font-size: 14.5px;
+    line-height: 46px;
+}
+
+@media (max-width: 880px) {
+    .stats-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.stat-label {
+    font-family: var(--type);
+    font-size: 11px;
+    color: var(--brown2);
+    letter-spacing: 0.3px;
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: 30px;
+    color: var(--ink);
+}
+
+.stat-delta {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    color: #3E5C2E;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/* Content Grid Split */
+.dashboard-grid-split {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid-split {
+        grid-template-columns: 1fr;
+    }
+}
+
+.panel {
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    border-radius: 3px;
+    padding: 22px;
+    position: relative;
+    box-shadow: 0 1px 0 var(--rule), 3px 3px 0 rgba(107, 79, 50, 0.06);
+}
+
+.panel::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(201, 179, 140, 0.45);
+    pointer-events: none;
+}
+
+.panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    border-bottom: 2px double var(--rule);
+    padding-bottom: 10px;
+}
+
+.panel-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 6px;
+    border-bottom: 1px solid rgba(201, 179, 140, 0.5);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.form-row:last-child {
+    border-bottom: none;
+}
+
+.form-row:hover {
+    background: rgba(166, 93, 59, 0.05);
+}
+
+.form-thumb {
+    width: 38px;
+    height: 38px;
+    border-radius: 3px;
+    background: var(--parchment);
+    border: 1px solid var(--rule);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.form-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.form-name {
+    font-weight: 700;
+    font-size: 14.5px;
+    color: var(--ink);
+}
+
+.form-meta {
+    font-family: var(--type);
+    font-size: 11px;
+    color: var(--brown2);
+    margin-top: 2px;
+}
+
+/* Quick Templates Strip */
+.tpl-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+}
+
+.tpl-card {
+    background: var(--parchment);
+    border: 1.5px dashed var(--rule);
+    border-radius: 3px;
+    padding: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: all var(--transition-fast);
+}
+
+.tpl-card:hover {
+    border-color: var(--terracotta);
+    background: #EFE2C6;
+}
+
+.tpl-card.blank-card {
+    border: 2px dashed var(--terracotta);
+    background: rgba(166, 93, 59, 0.08);
+}
+
+.tpl-name {
+    font-weight: 700;
+    font-size: 13.5px;
+    margin-bottom: 10px;
+    color: var(--ink);
+}
+
+.tpl-plus {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1.5px solid var(--terracotta);
+    color: var(--terracotta);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}

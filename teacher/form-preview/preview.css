@@ -1,0 +1,150 @@
+/* ==========================================================================
+   TrevaForms - Form Preview (Registrar Parchment Theme)
+   ========================================================================== */
+
+.preview-wrapper {
+    min-height: 100vh;
+    background: var(--parchment);
+    background-image:
+        radial-gradient(rgba(107,79,50,.035) 1px, transparent 1px),
+        radial-gradient(rgba(107,79,50,.025) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    padding: 3rem 1rem;
+}
+
+.preview-container {
+    max-width: 740px;
+    margin: 0 auto;
+}
+
+.preview-header-card {
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    border-top: 8px solid var(--terracotta);
+    border-radius: 3px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    box-shadow: 0 1px 0 var(--rule), 3px 3px 0 rgba(107, 79, 50, 0.06);
+}
+
+.preview-header-card::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(201, 179, 140, 0.45);
+    pointer-events: none;
+}
+
+.preview-title {
+    font-family: var(--serif);
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+}
+
+.preview-desc {
+    font-family: var(--merri);
+    font-style: italic;
+    color: var(--brown2);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.preview-question-card {
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    border-radius: 3px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    box-shadow: 0 1px 0 var(--rule), 3px 3px 0 rgba(107, 79, 50, 0.06);
+}
+
+.preview-question-card::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(201, 179, 140, 0.45);
+    pointer-events: none;
+}
+
+.preview-question-title {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    color: var(--ink);
+}
+
+.required-asterisk {
+    color: var(--terracotta);
+    margin-left: 0.2rem;
+}
+
+.star-rating-widget {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.75rem;
+    cursor: pointer;
+}
+
+.star-rating-widget .star {
+    color: var(--rule);
+    transition: color var(--transition-fast);
+}
+
+.star-rating-widget .star.active {
+    color: #B87820;
+}
+
+.linear-scale-widget {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 1rem 0;
+}
+
+.scale-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--type);
+    font-size: 12px;
+}
+
+.choice-label-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.choice-label-row input {
+    accent-color: var(--terracotta);
+    width: 18px;
+    height: 18px;
+}
+
+.preview-success-card {
+    background: var(--paper);
+    border: 2px solid var(--rule);
+    border-radius: 4px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 6px 6px 0 rgba(107, 79, 50, 0.2);
+    position: relative;
+}
+
+.preview-success-card::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(201, 179, 140, 0.45);
+    pointer-events: none;
+}

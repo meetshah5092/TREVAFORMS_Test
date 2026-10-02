@@ -1,0 +1,104 @@
+/* ==========================================================================
+   TrevaForms - Settings & Profile (Registrar Parchment Theme)
+   ========================================================================== */
+
+.settings-layout-split {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .settings-layout-split {
+        grid-template-columns: 1fr;
+    }
+}
+
+.settings-nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.settings-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--brown2);
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.settings-nav-btn:hover {
+    background: rgba(166, 93, 59, 0.08);
+    color: var(--brown);
+}
+
+.settings-nav-btn.active {
+    background: var(--paper);
+    color: var(--brown);
+    border-left-color: var(--terracotta);
+    font-weight: 700;
+}
+
+.settings-card-body {
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    border-radius: 3px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 1px 0 var(--rule), 3px 3px 0 rgba(107, 79, 50, 0.06);
+}
+
+.settings-card-body::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(201, 179, 140, 0.45);
+    pointer-events: none;
+}
+
+.theme-options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.theme-option-box {
+    background: var(--parchment);
+    border: 1.5px solid var(--rule);
+    border-radius: 3px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.theme-option-box:hover {
+    border-color: var(--terracotta);
+}
+
+.theme-option-box.active {
+    border-color: var(--terracotta);
+    background: #EFE2C6;
+    box-shadow: 2px 2px 0 var(--brown);
+}
+
+.toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule-light);
+}
+
+.toggle-row:last-child {
+    border-bottom: none;
+}

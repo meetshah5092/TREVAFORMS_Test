@@ -1,0 +1,128 @@
+﻿/* ==========================================================================
+   TrevaForms Student — Notifications Styles
+   ========================================================================== */
+
+.notif-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.notif-unread-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+}
+
+.notifications-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notif-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-xs);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    cursor: pointer;
+    transition: all var(--transition);
+    position: relative;
+}
+
+.notif-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+
+.notif-card.unread {
+    background: rgba(108, 77, 246, 0.04);
+    border-color: rgba(108, 77, 246, 0.2);
+}
+
+.notif-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.notif-type-form_assigned {
+    background: #EFF6FF;
+    color: #2563EB;
+}
+
+.notif-type-deadline_reminder {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+.notif-type-submission_success {
+    background: #E8F8F2;
+    color: #059669;
+}
+
+.notif-type-warning {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+.notif-type-info {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.notif-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notif-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.notif-card.unread .notif-title {
+    color: var(--primary-dark);
+}
+
+.notif-body-text {
+    font-size: 13.5px;
+    color: var(--text-2);
+    line-height: 1.45;
+    margin-bottom: 6px;
+}
+
+.notif-time-ago {
+    font-size: 11.5px;
+    color: var(--muted);
+}
+
+.notif-unread-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--primary);
+    flex-shrink: 0;
+    margin-top: 6px;
+}

@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile — TrevaForms Student</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Cinzel:wght@600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/student.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body class="app-shell">
+    <aside id="student-sidebar"></aside>
+
+    <div class="main-content">
+        <header class="top-header" id="top-header">
+            <button class="header-hamburger" id="sidebar-hamburger" aria-label="Menu" onclick="toggleSidebar()">☰</button>
+            <span class="header-title" id="header-title">My Profile</span>
+            <div class="header-spacer"></div>
+            <div class="header-actions">
+                <button class="header-icon-btn" onclick="window.location.href='../notifications/index.html'" title="Notifications">
+                    🔔
+                    <span class="header-notif-count" id="header-notif-count"></span>
+                </button>
+                <button class="header-avatar-btn" id="header-avatar" onclick="window.location.href='../profile/index.html'">S</button>
+            </div>
+        </header>
+
+        <main class="page-content" id="page-content">
+            <div class="page-header">
+                <h1 class="page-title">Student Profile</h1>
+                <p class="page-subtitle">Manage your personal information, enrolled course, and academic division.</p>
+            </div>
+
+            <!-- Profile Layout -->
+            <div class="profile-layout">
+                <!-- Left: Profile Summary Card -->
+                <div class="profile-card">
+                    <div class="profile-avatar-wrap">
+                        <div class="profile-avatar" id="prof-summary-avatar">S</div>
+                        <button type="button" class="avatar-edit-btn" onclick="document.getElementById('avatar-file-input').click()" title="Change Profile Picture">
+                            ✎
+                        </button>
+                        <input type="file" id="avatar-file-input" accept="image/*" style="display: none;" onchange="handleAvatarFileSelect(event)">
+                    </div>
+
+                    <h2 class="profile-name" id="prof-summary-name">Loading...</h2>
+                    <span class="profile-role-badge">🎓 Verified Student</span>
+                    <div class="profile-email" id="prof-summary-email">student@trevaforms.app</div>
+                    <div class="profile-since" id="prof-summary-joined">Member since 2026</div>
+
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <div class="profile-stat-value" id="prof-stat-completed">0</div>
+                            <div class="profile-stat-label">Completed</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="profile-stat-value" id="prof-stat-pending">0</div>
+                            <div class="profile-stat-label">Pending</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Editable Details Card -->
+                <div class="edit-card">
+                    <h3 class="edit-card-title">Academic &amp; Personal Details</h3>
+
+                    <form id="profile-edit-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="input-prof-name" class="form-label">Full Name <span class="required">*</span></label>
+                                <input type="text" id="input-prof-name" class="form-control" required placeholder="Your full legal name">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-prof-sid" class="form-label">Student ID / Roll No</label>
+                                <input type="text" id="input-prof-sid" class="form-control" placeholder="e.g. STU-2026-042">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-prof-course" class="form-label">Program / Course</label>
+                            <input type="text" id="input-prof-course" class="form-control" placeholder="e.g. B.Tech Computer Science">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="select-prof-sem" class="form-label">Current Semester</label>
+                                <select id="select-prof-sem" class="form-control">
+                                    <option value="1">Semester 1</option>
+                                    <option value="2">Semester 2</option>
+                                    <option value="3">Semester 3</option>
+                                    <option value="4">Semester 4</option>
+                                    <option value="5">Semester 5</option>
+                                    <option value="6">Semester 6</option>
+                                    <option value="7">Semester 7</option>
+                                    <option value="8">Semester 8</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-prof-div" class="form-label">Class Division / Batch</label>
+                                <input type="text" id="input-prof-div" class="form-control" placeholder="e.g. Div A, Batch B2">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-prof-email" class="form-label">Account Email Address</label>
+                            <input type="email" id="input-prof-email" class="form-control" disabled style="background:var(--surface-3); opacity:0.8;">
+                            <p class="field-note">To change your email address, navigate to <a href="../settings/index.html">Settings → Account</a>.</p>
+                        </div>
+
+                        <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
+                            <button type="submit" class="btn btn-primary btn-lg" id="btn-save-profile">
+                                Save Profile Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../shared/js/supabase-client.js"></script>
+    <script src="../shared/app.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>
